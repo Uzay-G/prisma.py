@@ -39,4 +39,6 @@ class Prismalytics:
             if self.save_server:
                 data = {'commands': json.dumps(self.commands), 'servers': json.dumps(self.servers), 'save_server': True}
             else: data = {'commands': json.dumps(self.commands), 'save_server': False}
-            requests.post('http://localhost:3000/send_data', data=data, headers={'key': self.key})
+            requests.post('https://prismalytics.herokuapp.com//send_data', data=data, headers={'key': self.key})
+            self.commands = {}
+            self.servers = []
