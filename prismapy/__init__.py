@@ -1,5 +1,4 @@
 import datetime
-import json
 import requests
 
 class Prismalytics:
@@ -61,14 +60,14 @@ class Prismalytics:
         if (unset or interval > 2):
             self.time = curr_time
             data = {
-                "commands": json.dumps(self.commands),
+                "commands":  self.commands,
                 "save_server": self.save_server
                 }
             if self.save_server: 
-                data["servers"] = json.dumps(self.servers)
+                data["servers"] = self.servers
 
             # refactor this to use asyncio requests and have the program run in the background
-            requests.post('https://prismalytics.herokuapp.com/send_data', data=data, headers={'key': self.key})
+            requests.post('https://prismalytics.herokuapp.com/send_data', json=data, headers={'key': self.key})
 
             # reinitialize stored data as it has been sent
             self.commands = {}
