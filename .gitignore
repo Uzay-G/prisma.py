@@ -1,3 +1,4 @@
 build/
 dist/
 prismapy.egg-info/
+prismapy/__pycache__/
