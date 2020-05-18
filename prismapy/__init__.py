@@ -34,7 +34,8 @@ class Prismalytics:
                 new_server = {
                     "name": server.name,
                     "member_count": server.member_count,
-                    "region": server.region, "bot_messages": 1
+                    "region": server.region,
+                    "bot_messages": 1
                     }
                 self.servers.append(new_server)
 
