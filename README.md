@@ -4,6 +4,12 @@ Simple wrapper for Prismanalytics Discord bot analytics that interfaces with `di
 
 ## Setup
 
+Install prismalytics with `pip`:
+
+```python
+pip install prismapy
+```
+
 - Create an account / login at https://prismalytics.herokuapp.com and register a new bot.
 - Copy it's token
 
