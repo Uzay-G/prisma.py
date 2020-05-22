@@ -1,5 +1,6 @@
 import datetime
-import requests
+import aiohttp
+import asyncio
 
 class Prismalytics:
     def __init__(self, key, client, save_server=True):
@@ -41,7 +42,7 @@ class Prismalytics:
             else:
                 match["bot_messages"] += 1
             
-    def send(self, ctx):
+    async def send(self, ctx):
         """
         processes data and sends every 2 minutes
         TODO: refactor so that users don't need to use ctx
@@ -67,7 +68,8 @@ class Prismalytics:
                 data["servers"] = self.servers
 
             # refactor this to use asyncio requests and have the program run in the background
-            requests.post('https://prismalytics.herokuapp.com/send_data', json=data, headers={'key': self.key})
+            async with aiohttp.ClientSession() as session:
+                await session.post("https://prismalytics.herokuapp.com/send_data", json=data, headers={'key': self.key})
 
             # reinitialize stored data as it has been sent
             self.commands = {}

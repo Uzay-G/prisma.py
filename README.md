@@ -27,7 +27,7 @@ analytics = prismapy.Prismalytics("<bot api key>", client)
 ```python
 @client.event
 async def on_command(ctx):
-    analytics.send(ctx)
+    await analytics.send(ctx)
 ```
 
 This will send the data to our api through the library and you'll have a beatiful dashboard like this:
@@ -36,7 +36,6 @@ This will send the data to our api through the library and you'll have a beatifu
 
 ## TODO
 
-- Replace `requests` with asyncio
 - Modularise code to support without ctx
 - Allow more flexibility in the way data is processed
 - Make the recurrent api calls run in the background instead of calling them when a new message is received.
